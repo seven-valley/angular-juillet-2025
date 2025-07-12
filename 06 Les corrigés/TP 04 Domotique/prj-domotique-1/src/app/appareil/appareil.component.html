@@ -1,0 +1,9 @@
+<li class="list-group-item"
+[ngClass]="{
+    'list-group-item-success': appareil.status == true,
+    'list-group-item-danger': appareil.status== false
+}"
+>
+    <h4> {{appareil.nom}}</h4>
+
+</li>

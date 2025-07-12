@@ -1,0 +1,12 @@
+<div class="container">
+  <div 
+
+  *ngFor="let tuile of tuiles;index as i"
+  [class]="{'green': i == active}"
+  >
+      <img 
+      *ngIf="tuile != -1"
+      src="./assets/{{ tuile }}.webp"  width="80" (click)="onVerifier(i)">
+  </div>
+</div>
+  

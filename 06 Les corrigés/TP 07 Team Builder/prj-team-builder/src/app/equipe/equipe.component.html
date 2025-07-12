@@ -1,0 +1,56 @@
+<table class="table table-striped mt-4">
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <div class="row">
+            <div class="col-2">
+              <button class="btn btn-danger" (click)="onEnleverEquipe(equipe.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+            <div class="col-5">
+              <h3>{{ equipe.nom }}</h3>
+            </div>
+            <div class="col-5"></div>
+          </div>
+        </td>
+        <td>
+          <div class="row">
+            <div class="col-10">
+          <select aria-label="Personne" class="form-select" [(ngModel)]="personneIndice">
+            
+            <option  
+            *ngFor="let p of getPersonnes();index as i"
+            [value]="i"
+            >{{p.prenom}} {{p.nom}}</option>
+            
+          </select>
+          </div>
+          <div class="col-2">
+          <button class="btn btn-success" (click)="onAjouterPeronne()">
+            <i class="fa fa-plus"></i>
+          </button>
+          </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Action</th>
+      </tr>
+
+      <tr *ngFor="let p of equipe.personnes;index as i">
+        <td>{{p.prenom}}</td>
+        <td>{{p.nom}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onEnleverPersonne(i)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+

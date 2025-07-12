@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-tv me-3"></i>
+      Domotique</a>
+  </div>
+</nav>
+<div class="container mb-3">
+  <div class="row">
+    <div class="col-4">
+      <h2>Les Appareils</h2>
+      <form (ngSubmit)="ajouter(a)" #a="ngForm">
+
+      <input name="nom"  class="form-control" placeholder="Appareil" ngModel />
+
+      <button class="btn btn-secondary my-3" type="submit">
+        <i class="fa fa-plus"></i>
+      </button>
+    </form>
+
+      <ul class="list-group">
+        <app-appareil 
+        *ngFor="let a of appareils;index as i"
+        [appareil]="a"
+        [indice]="i"
+        ></app-appareil>
+      </ul>
+      <br />
+      <button (click)="onSwitch(true)" class="btn btn-success">ALL ON</button>
+
+      <button (click)="onSwitch(false)" class="ms-3 ml-2 btn btn-danger">ALL OFF</button>
+    </div>
+  </div>
+</div>
+<footer class="py-5 bg-dark">
+  <div class="container px-4 px-lg-5">
+    <p class="m-0 text-center text-white">
+      Copyright &copy; Seven Valley 2024
+    </p>
+  </div>
+</footer>

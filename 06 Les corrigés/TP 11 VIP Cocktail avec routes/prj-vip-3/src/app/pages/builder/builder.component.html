@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+      <div class="col-8">
+        <div class="bg-gris p-4">
+          <form (ngSubmit)="ajouter(a)" #a="ngForm">
+          <div class="row">
+            <div class="col-4">
+              <input
+                aria-label="Prénom"
+                class="form-control"
+                placeholder="Prénom"
+                name="prenom"
+                ngModel
+              />
+            </div>
+            <div class="col-4">
+              <input
+                aria-label="Nom"
+                class="form-control"
+                placeholder="Nom"
+                name="nom"
+                ngModel
+              />
+            </div>
+            <div class="col-1">
+              <button class="btn btn-success">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <table class="table table-striped mt-4">
+          <thead>
+            <tr>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th colspan="2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [class]="getClass(p.status)" *ngFor = "let p of personnes;index as i">
+              <td>{{p.prenom}}</td>
+              <td>{{p.nom}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="onEnlever(i)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-warning" (click)="onChanger(i)">
+                  <i class="fa fa-check"></i>
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-primary" (click)="onModifier(i)">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- col4 -->
+    </div>
+    <!-- row -->
+  </div>

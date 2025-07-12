@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="col-4">
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [class]="getClass(p.status)" *ngFor="let p of personnes">
+          <td>{{ p.prenom }}</td>
+          <td>{{ p.nom }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
