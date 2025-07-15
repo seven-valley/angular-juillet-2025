@@ -6,7 +6,7 @@ Les tableaux en JavaScript et TypeScript
 :one: Déclarer et initialiser un tableau  
 :two: Parcourir un tableau   
 :three: La directive structurelle ngFor    
-:four: Echantilloné un tablea
+:four: Echantilloné un tableau
 
 
 ## Les tableaux en JavaScript & TypeScript
