@@ -15,7 +15,7 @@ Les tableaux en JavaScript et TypeScript
 <code>console.table()</code> est préférable au <code>console.log()</code>
 
 **Un tableau d'entier**
-```ts
+```js
 const tableau:number[] =[];
 tableau[0]=42;
 tableau[1]=51;
@@ -34,7 +34,7 @@ console.table(tableau);
 | 2 | 54 |
 
 **Un tableau de chaînes de caractère**
-```ts
+```js
 const fruits:string[] =[];
 fruits[0]='pomme';
 fruits[1]='poire';
@@ -52,7 +52,7 @@ console.table(fruits);
 | 2 | kiwi |
 
 **Bonne pratique avec push** :heart_eyes:
-```ts
+```js
 const fruits:string[] =[];
 tableau.push('pomme');
 tableau.push('poire');
@@ -68,7 +68,7 @@ console.table(fruits);
 **Un tableau d'objet**
 :warning: Ici le type <code>any</code> est générique   
 Il serait préférable de créer une classe BO **B**usiness **O**bject <code>Personne</code>
-```ts
+```js
 const personnes:Personne[] =[];
 ```
 
