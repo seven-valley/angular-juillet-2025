@@ -30,7 +30,10 @@ export class MyFormComponent {
       this.myForm.markAllAsTouched(); // Force affichage des erreurs
       return;
     }
-    console.log(this.myForm.val
+    console.log(this.myForm.value)
+     console.log(this.form.value);
+  }
+}
 ```
 
 ```html
