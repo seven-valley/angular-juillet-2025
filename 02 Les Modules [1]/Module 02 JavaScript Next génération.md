@@ -42,7 +42,7 @@ console.log(p1);
 ## Spread ... pour cloner une objet
 
 ```js
-const p1 = { nom: "PITT", prenom: "Brad", age: 18 };
+const p1 = { nom: "PITT", prenom: "Brad"};
 const p2 = { ...p1, age: 18 };
 p2.nom = "CRUISE";
 console.log(p1);
