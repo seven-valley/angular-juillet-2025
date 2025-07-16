@@ -31,7 +31,7 @@ export class MyFormComponent {
       return;
     }
     console.log(this.myForm.value)
-     console.log(this.form.value);
+     
   }
 }
 ```
