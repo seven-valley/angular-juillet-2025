@@ -234,7 +234,7 @@ let userRole :Role = 'admin'
 
 
 ## Les tuples
-Il possible de définir le contenu du tableau avec les tuples
+Il est possible de définir le contenu du tableau avec les tuples
 ```ts
 let val [number,number];
 val =[-1,1];
