@@ -195,6 +195,10 @@ Vous prenez la responsabilité d'initialiser cette propriété plus tard. Sinon,
 | `!`     | **Suppression** du contrôle TS | Tu affirmes qu'elle existera | ✅ Oui (à toi de gérer)   |
 
 
+------------------
+------------------
+
+
 # Type script 
 ## typer les tableaux
 ```ts
