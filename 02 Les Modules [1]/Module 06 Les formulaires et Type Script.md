@@ -201,6 +201,13 @@ Vous prenez la responsabilité d'initialiser cette propriété plus tard. Sinon,
 
 
 # Type script 
+## définir plusieurs type
+```ts
+let mot string | null;
+mot ='hello' ;
+mot = null;
+```
+
 ## typer les tableaux
 ```ts
 let fruit:string[];
@@ -222,6 +229,7 @@ info = -1,'poire','cerise';
 ```
 
 ## Les litterals
+
 Il est possible de prédéfinir les valeurs
 ```ts
 let userRole :'admin'|'user'|'guest' ='admin' 
