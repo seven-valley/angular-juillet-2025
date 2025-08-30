@@ -109,9 +109,10 @@ class Personne {
   nom: string;
   age?: number;
 
-  // Signatures surchargées "overloading"  /!\ PAS POSSIBLE en Type Script /!\
-  constructor(nom: string);
-  constructor(nom: string, age: number);
+  // Signatures surchargées "overloading"  
+  // /!\ PAS POSSIBLE en Type Script /!\ 
+  //constructor(nom: string);
+  //constructor(nom: string, age: number);
 
 // Alors voici comment on fait :)
   // Implémentation unique
