@@ -213,7 +213,7 @@ let info:Array<string|number>;
 fruit = -1,'poire','cerise';
 ```
 
-Les litterals
+## Les litterals
 Il est possible de prédéfinir les valeurs
 ```ts
 userRole :'admin'|'user'|'guest' ='admin' 
@@ -225,7 +225,7 @@ userRole :Role = 'admin'
 ```
 
 
-Les tuples
+## Les tuples
 Il possible de définir le contenu du tableau
 ```ts
 let val [number,number];
@@ -238,3 +238,14 @@ val =[-1,1];
 
 ```
 
+## Enum
+Les énumérations avec Type Script
+```ts 
+enum Role ={
+  Admin,
+  Editor,
+  Guest
+}
+let userRole :Role = 0 // admin
+userRole= Role.Editor // 1
+```
