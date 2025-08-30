@@ -193,3 +193,48 @@ Vous prenez la responsabilité d'initialiser cette propriété plus tard. Sinon,
 | ------- | ------------------------------ | ---------------------------- | ------------------------ |
 | `?`     | Propriété **optionnelle**      | Type ou `undefined`          | ❌ Non                    |
 | `!`     | **Suppression** du contrôle TS | Tu affirmes qu'elle existera | ✅ Oui (à toi de gérer)   |
+
+
+# Type script 
+## typer les tableaux
+```ts
+let fruit:string[];
+fruit = 'pomme','poire','cerise';
+```
+
+Il est possible d'assigner plusieur type
+```ts
+let info:(string|number)[];
+fruit = -1,'poire','cerise';
+```
+
+```ts
+let info:Array<string|number>;
+fruit = -1,'poire','cerise';
+```
+
+Les litterals
+Il est possible de prédéfinir les valeurs
+```ts
+userRole :'admin'|'user'|'guest' ='admin' 
+```
+Si l'on doit utiliser plusieurs fois le Role
+```ts
+type Role = 'admin'|'user'|'guest'
+userRole :Role = 'admin'
+```
+
+
+Les tuples
+Il possible de définir le contenu du tableau
+```ts
+let val [number,number];
+val =[-1,1];
+```
+Les tuples + litterals
+```ts
+let val2 [-1|1,-1|1];
+val =[-1,1];
+
+```
+
