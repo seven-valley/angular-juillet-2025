@@ -203,34 +203,37 @@ Vous prenez la responsabilité d'initialiser cette propriété plus tard. Sinon,
 ## typer les tableaux
 ```ts
 let fruit:string[];
-fruit = 'pomme','poire','cerise';
+fruit = ['pomme','poire','cerise'];
 ```
 
 Il est possible d'assigner plusieur type
 ```ts
 let info:(string|number)[];
-fruit = -1,'poire','cerise';
+info = [-1,'poire','cerise'];
+
+let info2:any[];
+info2 = ['pomme',-2,'cerise'];
 ```
 
 ```ts
 let info:Array<string|number>;
-fruit = -1,'poire','cerise';
+info = -1,'poire','cerise';
 ```
 
 ## Les litterals
 Il est possible de prédéfinir les valeurs
 ```ts
-userRole :'admin'|'user'|'guest' ='admin' 
+let userRole :'admin'|'user'|'guest' ='admin' 
 ```
 Si l'on doit utiliser plusieurs fois le Role
 ```ts
 type Role = 'admin'|'user'|'guest'
-userRole :Role = 'admin'
+let userRole :Role = 'admin'
 ```
 
 
 ## Les tuples
-Il possible de définir le contenu du tableau
+Il possible de définir le contenu du tableau avec les tuples
 ```ts
 let val [number,number];
 val =[-1,1];
