@@ -203,7 +203,7 @@ Vous prenez la responsabilité d'initialiser cette propriété plus tard. Sinon,
 # Type script 
 ## définir plusieurs type
 ```ts
-let mot string | null;
+let mot : string | null;
 mot ='hello' ;
 mot = null;
 ```
