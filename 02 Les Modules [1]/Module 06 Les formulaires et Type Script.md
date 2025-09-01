@@ -207,6 +207,8 @@ let mot string | null;
 mot ='hello' ;
 mot = null;
 ```
+## Nullish coalescing
+
 
 ## typer les tableaux
 ```ts
@@ -247,6 +249,9 @@ Il est possible de définir le contenu du tableau avec les tuples
 let val [number,number];
 val =[-1,1];
 ```
+
+
+
 Les tuples + litterals
 ```ts
 let val2 [-1|1,-1|1];

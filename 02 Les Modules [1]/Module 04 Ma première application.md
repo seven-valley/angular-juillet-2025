@@ -1,7 +1,7 @@
 # Les 3 notions de base
 __Pour créer une application angular__
   
-:one: L'interpolation : Afficher des variable    
+:one: L'interpolation : Afficher des variables    
 :two: La liaison par évènement **event binding** : le clique sur le bouton   
 :three: le liaison bidirectionnel **2 ways binding** : Je récupère la saisie du champ input   
 
