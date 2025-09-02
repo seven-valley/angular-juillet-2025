@@ -74,7 +74,10 @@ export class PersonneService {
 
 ```ts
 import { Personne } from "../../models/Personnes";
-
+import { Injectable } from "@angular/core";
+@Injectable({
+    providedIn:"root",
+})
 export class PersonneService {
   personnes: Personne[] = [
     { prenom: "Brad", nom: "PITT" },
@@ -91,7 +94,7 @@ export class PersonneService {
 }
 ```
 
-## :four: Ajouter le service en tant provider
+## :four: Ajouter le service en tant provider [option]
 
 **app.config.ts**
 
@@ -114,12 +117,10 @@ export const appConfig: ApplicationConfig = {
 import { Component, OnInit } from "@angular/core";
 import { PersonneService } from "./services/personne.service";
 //..
-export class AppComponent implements OnInit {
+export class AppComponent implements  {
   personnes: Personne[] = [];
-  constructor(private personneService: PersonneService) {}
-  ngOnInit(): void {
-    this.personnes = this.personneService.personnes;
-  }
+ private personneService = inject(PersonneService);
+ personnes:Personne[]=this.personneService.personnes;
 
   // ajouter la méthode pour ajouter ds le service
   ajouter(f: NgForm) {
@@ -136,7 +137,7 @@ export class AppComponent implements OnInit {
 
 ```ts
 export class GuestComponent {
-  constructor(private personneService: PersonneService) {}
+   private personneService = inject(PersonneService);
   @Input() personne: Personne = new Personne();
   @Input() indice: number = 0;
   onEnlever() {
