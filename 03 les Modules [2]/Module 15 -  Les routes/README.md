@@ -20,7 +20,7 @@ La page **About**
 ```
 ng g c about
 ```
-La page **Contact**
+La page **Produit**
 ```
 ng g c contact
 ```
@@ -84,7 +84,6 @@ export class AppComponent {
 ```
 
 ## :four: La page Home
-Injecter le router dans le constructeur
 
 
  **app.component.ts**
