@@ -94,7 +94,7 @@ export class PersonneService {
 }
 ```
 
-## :four: Ajouter le service en tant provider [option]
+## :four: Ajouter le service en tant provider [optional]
 
 **app.config.ts**
 
@@ -137,11 +137,24 @@ export class AppComponent implements  {
 
 ```ts
 export class GuestComponent {
-   private personneService = inject(PersonneService);
-  @Input() personne: Personne = new Personne();
-  @Input() indice: number = 0;
-  onEnlever() {
-    this.personneService.enlever(this.indice);
-  }
+personne = input.required<Personne>()  
+indice = input.required<number>()  
+
+ constructor(private personneService:PersonneService){
+ }
+ onEnlever(){
+  this.personneService.enlever(this.indice())
+ }
 }
 ```
+
+**guest.component.html**
+```html
+<p>{{personne().id}} -{{indice()}} {{personne().prenom}} {{personne().nom}}
+
+    <button
+    (click)="onEnlever()"
+    class="btn btn-danger">del
+        <i class="fa fa-trash"></i>
+    </button>
+</p>

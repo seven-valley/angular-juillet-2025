@@ -84,18 +84,3 @@ export class Device {
 
 ```
 
-## 2 ways binding
-```ts
-import { Component, signal } from '@angular/core';
-
-@Component({
-  selector: 'app-form',
-  template: `
-    <input [value]="username()" (input)="username.set($any($event.target).value)" />
-    <p>Tu as tapé : {{ username() }}</p>
-  `
-})
-export class FormComponent {
-  username = signal('');
-}
-```
