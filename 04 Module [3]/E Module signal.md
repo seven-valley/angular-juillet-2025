@@ -42,8 +42,19 @@ export class AppComponent {
 
     <p><strong>Nom complet (computed) :</strong> {{ fullName() }}</p>
 ```
+En Angular (et plus largement en TypeScript), **$any** est un cast spécial disponible uniquement dans les templates Angular.
+
+## Définition
+
+$any(expr) dit à Angular :  
+
+"Considère expr comme étant de type any."  
+
+C’est une façon de désactiver temporairement le typage strict dans un template.  
+
 
 # Autre exemple avec un compteur
+
 ```ts
 import { Component, signal, computed, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
