@@ -25,8 +25,8 @@ import { UserService } from './user.service';
   selector: 'app-users',
   template: `
     <ng-container [ngSwitch]="usersResource.state()">
-      <p *ngSwitchCase="'loading'">⏳ Chargement...</p>
-      <p *ngSwitchCase="'error'">❌ Erreur lors du chargement</p>
+      <p *ngSwitchCase="'loading'"> Chargement...</p>
+      <p *ngSwitchCase="'error'"> Erreur lors du chargement</p>
       <ul *ngSwitchCase="'success'">
         <li *ngFor="let user of usersResource.value()">
           {{ user.name }}
