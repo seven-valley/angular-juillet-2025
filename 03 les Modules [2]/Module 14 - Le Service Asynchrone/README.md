@@ -227,3 +227,104 @@ export class PersonneService {
   }
 }
 ```
+
+
+# Le service avec signal
+**personne.service.ts**
+```ts
+import { inject, Injectable, signal } from '@angular/core';
+import { Personne } from '../models/personne';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class PersonneService {
+  //personneSubject = new Subject();
+   httpClient = inject(HttpClient);
+  url ='https://ib-vip-nantes-default-rtdb.europe-west1.firebasedatabase.app/user.json';
+   personnes= signal<Personne[]>([]);
+
+  ajouter(personne: Personne): void {
+    const tab =this.personnes()
+    tab.push(personne)
+    this.personnes.set(tab)
+    this.saveFire();
+  }
+  enlever(indice: number): void {
+    const tab =this.personnes()
+   
+    tab.splice(indice, 1);
+    this.personnes.set(tab)
+    this.saveFire();
+  }
+  saveFire() {
+    this.httpClient.put(this.url, this.personnes()).subscribe((response) => {
+      console.log(response);
+     // this.emitPersonneSubject();
+    });
+  }
+  loadFire() {
+    this.httpClient.get<any[]>(this.url).subscribe((response) => {
+      if (response != undefined) {
+        this.personnes.set(response);
+      }
+      //this.emitPersonneSubject();
+    });
+  }
+}
+```
+
+**personne.service.ts**
+```ts
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { GuestComponent } from './guest/guest.component';
+import { CommonModule } from '@angular/common';
+import { Personne } from './models/personne';
+import { PersonneService } from './services/personne.service';
+import { FormsModule, NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet,GuestComponent,CommonModule,FormsModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent  {
+
+ // private personneService;
+  personneService = inject(PersonneService);
+ personnes:Personne[]=this.personneService.personnes() ;
+
+
+ ngOnInit(){
+  this.personneService.loadFire()
+  console.log(this.personnes)
+ }
+ ajouter(form:NgForm){
+  const personne = new Personne(form.value['prenom'],form.value['nom']);
+  form.reset()
+  this.personneService.ajouter(personne)
+ }
+
+ 
+}
+```
+
+**app.component.ts**
+```html
+
+<form (ngSubmit)="ajouter(a)" #a="ngForm">
+  <input type="text" name="prenom" placeholder="Prénom" ngModel>
+  <input type="text" name="nom"  placeholder="Nom" ngModel>
+  <button type="submit">Ajouter</button>
+</form>
+
+@for (personne of personneService.personnes(); track personne.id; let i = $index){
+
+  <app-guest [personne]="personne"  [indice]="i" ></app-guest>
+} 
+```
