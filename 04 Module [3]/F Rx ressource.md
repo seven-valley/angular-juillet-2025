@@ -122,7 +122,7 @@ export class UserDetailComponent {
 
 <code>rxResource</code> surveille ce signal → dès que <code>userId</code> change, il relance automatiquement le <code>loader</code>.
 
-<code>request</code> est un objet que tu définis toi-même (ici <code>{ id: number }</code>).
+<code>request</code> est un objet que vous définissez vous-même (ici <code>{ id: number }</code>).
 
 <code>loader</code> reçoit ce <code>request</code> et retourne l’Observable.
 
