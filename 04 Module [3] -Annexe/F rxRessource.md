@@ -1,4 +1,4 @@
-# RX ressource
+#  rxRessource
 
 ```ts
 import { Injectable } from '@angular/core';
