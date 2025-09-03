@@ -126,4 +126,4 @@ export class UserDetailComponent {
 
 <code>loader</code> reçoit ce <code>request</code> et retourne l’Observable.
 
-Résultat : quand tu changes la valeur dans la <select>, <code>rxResource</code> recharge l’utilisateur correspondant.
+Résultat : quand vous changez la valeur dans la <select>, <code>rxResource</code> recharge l’utilisateur correspondant.
