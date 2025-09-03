@@ -94,8 +94,8 @@ import { UserService } from './user.service';
     </select>
 
     <ng-container [ngSwitch]="userResource.state()">
-      <p *ngSwitchCase="'loading'">⏳ Chargement...</p>
-      <p *ngSwitchCase="'error'">❌ Erreur lors du chargement</p>
+      <p *ngSwitchCase="'loading'"> Chargement...</p>
+      <p *ngSwitchCase="'error'"> Erreur lors du chargement</p>
       <div *ngSwitchCase="'success'">
         <h4>{{ userResource.value()?.name }}</h4>
         <p>Email : {{ userResource.value()?.email }}</p>
