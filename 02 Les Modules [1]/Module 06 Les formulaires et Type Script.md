@@ -30,7 +30,8 @@ export class AppComponent {
     <button type="submit">ajouter</button>
   </form>
 ```
-# Un formulaire Complet
+# Un formulaire Complet 
+_Formulaires template-driven (pilotés par le template)_
 **app.component.ts**
 ```ts
 export class AppComponent {
