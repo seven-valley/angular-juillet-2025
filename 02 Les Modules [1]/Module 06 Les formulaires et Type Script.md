@@ -209,7 +209,29 @@ mot ='hello' ;
 mot = null;
 ```
 ## Nullish coalescing
+En TypeScript (comme en JavaScript moderne), l’opérateur nullish coalescing <code>??</code> sert à fournir une valeur par défaut uniquement si la valeur de gauche est <code>null</code> ou <code>undefined</code>.
+```ts
+let resultat = valeur ?? valeurParDefaut;
+```
 
+```ts
+let nom: string | null = null;
+let userName = nom ?? "Anonyme";
+console.log(userName); // "Anonyme"
+
+```
+### Différence avec ||
+```ts
+let age = 0;
+
+let avecOr = age || 18;   // → 18 (car 0 est falsy)
+let avecNullish = age ?? 18; // → 0 (car 0 n’est pas null/undefined)
+
+console.log(avecOr);      // 18
+console.log(avecNullish); // 0
+```
+👉 <code>||</code> considère toute valeur falsy (0, false, "", NaN) comme “vide”.
+👉 <code>??</code> ne réagit qu’à null et undefined.
 
 ## typer les tableaux
 ```ts
