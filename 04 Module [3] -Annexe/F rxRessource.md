@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
+  //constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
