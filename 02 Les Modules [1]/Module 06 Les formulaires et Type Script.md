@@ -92,7 +92,8 @@ class Voiture {
   constructor(public marque: string, public annee: number) {}
 }
 ```
-
+# <code>?</code> (point d’interrogation) – Propriété optionnelle
+Le symbole ? indique que la **propriété est optionnelle** : elle **peut exister ou non**.
 En TypeScript, on **ne** peut **pas** créer plusieurs constructeurs comme en Java (pas d’overloading classique).  
 Mais on peut simuler plusieurs constructeurs en combinant :
 - une signature de surcharge (overload)
@@ -151,28 +152,7 @@ p2.sePresenter(); // Je m'appelle Bob et j'ai 30 ans.
 
 En TypeScript, les symboles <code>?</code> et <code>!</code> dans un constructeur ou dans une déclaration de propriété ont des **significations très différentes**, bien qu’ils soient souvent confondus.
 
-# <code>?</code> (point d’interrogation) – Propriété optionnelle
-Le symbole ? indique que la **propriété est optionnelle** : elle **peut exister ou non**.
 
-```ts
-class User {
-  nom: string;
-  age?: number; // optionnel
-
-  constructor(nom: string, age?: number) {
-    this.nom = nom;
-    this.age = age;
-  }
-}
-```
-age peut être <code>undefined</code>.
-
-
-Pas besoin de l’assigner obligatoirement dans le constructeur.
-```ts
-const u1 = new User("Alice");          // OK
-const u2 = new User("Bob", 25);        // OK
-```
 
 ## <code>!</code> (non-null assertion) – Suppression du contrôle d'initialisation
 Le symbole ! indique à TypeScript que tu garantis toi-même que la propriété sera initialisée, même si le compilateur ne le voit pas.
