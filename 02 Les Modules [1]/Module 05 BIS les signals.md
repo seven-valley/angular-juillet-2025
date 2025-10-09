@@ -5,6 +5,7 @@
 Création d'un signal  
 <code> signal('abc')</code>
 
+- Mettre à jour la vue sans "zone"
 - <code>signal()</code> est une **fonction réactive** introduite dans Angular **16**.
 
 - Elle crée un signal : une donnée **observable et réactive**, semblable à un <code>BehaviorSubject</code> mais **synchronisée et sans Observable**.
@@ -17,12 +18,29 @@ Ici, on crée un signal contenant la valeur initiale <code>'abc'</code>.
 
 Ou bien
 ```ts
-protected readonly title:WritableSignal = signal<string>('abc');
+ title = signal<string>('abc');
+``` 
+
+**Ou bien**
+```ts
+protected readonly title:WritableSignal<string> = signal('abc');
 ```
 
+**Pour l'afficher**
+```html
+<h1>{{ title() }}</h1>
+```
+title est une fonction qui s'abonne et qui se met à jours
 
 
+**Pour le modifier**
+```ts
+this.title.set('Bonjour')
+```
 
+```ts
+this.title.update(t => t +'??')
+```
 
 # 2 - Un formulaire complet avec signal
 
