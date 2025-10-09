@@ -7,15 +7,15 @@ Création d'un signal
 
 - <code>signal()</code> est une **fonction réactive** introduite dans Angular **16**.
 
-- Elle crée un signal : une donnée observable et réactive, semblable à un BehaviorSubject mais synchronisée et sans Observable.
+- Elle crée un signal : une donnée **observable et réactive**, semblable à un <code>BehaviorSubject</code> mais **synchronisée et sans Observable**.
 
-Ici, on crée un signal contenant la valeur initiale 'abc'.
+Ici, on crée un signal contenant la valeur initiale <code>'abc'</code>.
 
 ```ts
  title = signal('abc');
 ```
 
-
+Ou bien
 ```ts
 protected readonly title:WritableSignal = signal<string>('abc');
 ```
