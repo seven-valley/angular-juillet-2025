@@ -24,7 +24,7 @@ protected readonly title:WritableSignal = signal<string>('abc');
 
 
 
-# 2 - formulaire complet avec signal
+# 2 - Un formulaire complet avec signal
 
 ```ts
 import { RouterOutlet } from '@angular/router';
@@ -78,8 +78,8 @@ $any(expr) dit à Angular :
 C’est une façon de désactiver temporairement le typage strict dans un template.  
 
 
-# Autre exemple avec un compteur
-
+# 3- Autre exemple avec un compteur
+Mise en place de <code>set()</code>
 ```ts
 import { Component, signal, computed, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
