@@ -208,44 +208,9 @@ export class AppComponent {
   }
 }
 ```
+
+
 ## Démo Allumer et Eteindre partie 2
-
-<code>app.components.html</code>
-
-```html
-<div class="container">
-  
-  <div class="col-3">
-<button (click)="onAllumer()">Allumer</button>
-<br>
-<button (click)="onEteindre()">Eteindre</button>
-<!-- class="alert-danger"
-class="alert-success" -->
-
-<div class="alert my-3" [ngClass]="maClasse">
-  {{ status }}
-</div>
-</div>
-```
-<code>app.components.ts</code>
-
-```ts
-<div class="container">
-  
-  <div class="col-3">
-<button (click)="onAllumer()">Allumer</button>
-<br>
-<button (click)="onEteindre()">Eteindre</button>
-<!-- class="alert-danger"
-class="alert-success" -->
-
-<div class="alert my-3" [ngClass]="maClasse">
-  {{ status }}
-</div>
-</div>
-```
-
-## Démo Allumer et Eteindre partie 3
 <img src="../img/td/td5/p3-on.png" width="400">  
   
 <img src="../img/td/td5/p3-off.png" width="400">  
