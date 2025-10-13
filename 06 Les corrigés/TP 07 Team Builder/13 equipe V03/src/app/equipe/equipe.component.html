@@ -1,0 +1,25 @@
+<br><br>
+<table class="table table-striped" data-id='+teamId+'>
+<tr>
+<td colspan=3>
+	<h3>{{equipe.nom}}
+ <button class="btn btn-primary btnDelTeam"
+ (click)="onDeleteEquipe()"
+ >
+	<span class="glyphicon glyphicon-trash"></span>
+</button></h3>
+</td></tr>
+<tr>
+<th>Nom</th><th>Prenom</th><th>Action</th>
+</tr>
+<tr *ngFor="let p of equipe.personnes">
+	<td>{{ p.prenom}}</td>
+	<td>{{ p.nom}}</td>
+	<td>
+		<button class="btn btn-primary">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
+	</td>
+</tr>
+</table>
+

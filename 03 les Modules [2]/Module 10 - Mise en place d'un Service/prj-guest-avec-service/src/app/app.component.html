@@ -1,0 +1,20 @@
+<div class="container col-5 my-5">
+  <h1>Personnes</h1>
+  
+  <form (ngSubmit)="ajouter(a)" #a="ngForm">
+   
+    <input name="nom" class="my-3 form-control" ngModel />
+    <input name="prenom" class="my-3 form-control"  ngModel />
+    <button class="btn btn-primary my-2">
+      <i class="fa fa-plus "></i>
+    </button>
+  </form>
+  <ul class="list-group">
+   
+  <app-guest
+    *ngFor="let personne of personnes; index as i"
+    [indice]="i"
+    [personne]="personne"
+  ></app-guest>
+  </ul>
+</div>
