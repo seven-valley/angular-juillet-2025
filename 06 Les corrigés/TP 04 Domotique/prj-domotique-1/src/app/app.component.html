@@ -1,31 +1,26 @@
-<div class="container">
-		<div class="row">
-			<div class="col-4">
+<div class="container mb-3">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Les Appareils</h2>
 
-				<h2>Les Appareils</h2>
+      <input type="text" class="form-control" placeholder="Appareil" />
 
-<form (ngSubmit)="onAjouter(a)" #a="ngForm">
-  <input type="text" class="form-control my-3" name="nom" ngModel>
-  <button class="btn btn-success m-3" type="submit">
-    <i class="fa fa-plus"></i>
-  </button>
-</form>
-<ul class="list-group">
-  <app-appareil 
-  *ngFor="let appareil of appareils;index as indice"
-  [appareil]="appareil"
-  [indice]="indice"
-  ></app-appareil>
+      <button class="btn btn-secondary my-3">
+        <i class="fa fa-plus"></i>
+      </button>
 
-</ul>
+      <ul class="list-group">
 
-			<br>
-			<button (click)="onSwitch(true)" class="btn btn-success me-3">ALL ON</button>
+        @for (appareil of appareils; track appareil.id; let i = $index) {
+        <app-appareil [appareil]="appareil" [indice]="i">
+        </app-appareil>
+        }
 
-			<button  (click)="onSwitch(false)" class="ml-2 btn btn-danger">ALL OFF</button>
-		</div>
-	</div>
+      </ul>
+      <br />
+      <button class="btn btn-success">ALL ON</button>
+
+      <button class="ml-2 btn btn-danger">ALL OFF</button>
+    </div>
+  </div>
 </div>
-
-
-

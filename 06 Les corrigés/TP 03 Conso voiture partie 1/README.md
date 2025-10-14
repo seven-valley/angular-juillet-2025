@@ -7,40 +7,39 @@
 <code>app.components.ts</code>
 
 ```ts
-
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
+
+//import { RouterOutlet } from '@angular/router';
+
+// décorateurs
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  litre = '';
-  km = '';
   conso = '';
-  calcul() {
-    if (this.litre.length>0 && this.km.length>0) {
-      
-    
-    const consoVal = (parseFloat(this.litre) * 100) / parseFloat(this.km)
-    this.conso = consoVal.toFixed(1);
-    }
+  calculer(form: NgForm) {
+    const litre: string = form.value['litre'];
+    const km = form.value['km'];
+    const conso2 = (Number(litre) * 100) / Number(km);
+    this.conso = conso2.toFixed(1);
+    form.reset();
   }
-  getClass() {
-    if (parseFloat(this.conso) < 7) {
-      return 'alert-success';
+
+  getClass(): string {
+    if (Number(this.conso) <= 7) {
+      return 'alert-success'
     }
-    else if (parseFloat(this.conso) < 9) {
-      return 'alert-warning';
+    if (Number(this.conso) < 9) {
+      return 'alert-danger'
     }
-    else {
-      return 'alert-danger';
-    }
+    return 'alert-secondary'
+
   }
 }
 ```
@@ -48,44 +47,26 @@ export class AppComponent {
 <code>app.components.ts</code>
 
 ```ts
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-car me-3"></i>
-      Voiture Conso</a>
-  </div>
-</nav>
 <div class="container">
   <div class="row">
     <div class="col-4 pt-4">
       <h1 class="h3">Calculer votre consomation</h1>
-     <form (ngSubmit)="calcul(a)" #a="ngForm">
-      <input aria-label="litre" name="litre" class="form-control" placeholder="Litres d'essence" ngModel/>
+      <form (ngSubmit)="calculer(formConso)" #formConso="ngForm">
+        <input class="form-control" type="text" name="litre" placeholder="Litres" ngModel>
 
-      <input aria-label="km" name="km" class="form-control mt-3" placeholder="Kilomètres" ngModel/>
-      <button class="btn btn-primary my-3 col-12" type="submit">
-        <i class="fa-solid fa-calculator"></i>
-      </button>
+        <input class="form-control my-2" type="text" name="km" placeholder="Kilomètres" ngModel>
+        <button class="btn btn-primary mt-3 col-12">
+          <i class="fa-solid fa-calculator"></i>
+        </button>
+      </form>
 
-    </form>
-
-      <div class="alert mt-4" role="alert" *ngIf="conso.length > 0"
-        [class]="getClass()"
-        >
+      @if(conso.length >0){
+      <div class="alert  mt-4" role="alert" [class]="getClass()">
         <h3>Conso : <b>{{conso}}</b> Litres/100km</h3>
-        <p>Normal</p>
-      </div>
 
+      </div>
+      }
     </div>
   </div>
 </div>
-
-
-<footer class="py-5 bg-dark">
-  <div class="container px-4 px-lg-5">
-    <p class="m-0 text-center text-white">
-      Copyright &copy; Seven Valley 2024
-    </p>
-  </div>
-</footer>
 ```

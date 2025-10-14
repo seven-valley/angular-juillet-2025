@@ -7,52 +7,37 @@
 <code>app.components.html</code>
 
 ```html
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <i class="fa-solid fa-weight-scale"></i>
-          Calcul de l'IMC</a
-        >
+<div class="container">
+  <div class="row">
+    <div class="col-4 pt-4">
+      <h1 class="h3">Calculer votre IMC</h1>
+      <label for="poids">Poids en kg.</label>
+      <input type="text"
+      class="form-control"
+      [(ngModel)]="poids" placeholder="Poids en kg">
+      <label for="taille" class="mt-3">Taille en mètre</label>
+      <input type="text"
+      class="form-control"
+      [(ngModel)]="taille" placeholder="Taille en m.">
+      
+      <button (click)="onCalculer()" class="btn btn-success mt-3 col-12">
+        <i class="fa-solid fa-weight-scale"></i>
+      </button>
+
+
+
+      @if(imcAfficher.length > 0){
+      <div class="alert my-3" [class]="myClasse">
+        <div>IMC : {{imcAfficher}}</div>
+        <div>{{ tranche }}</div>
+        @if(objectif.length > 0) {
+        <div>{{ objectif }}</div>
+        }
       </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-4 pt-4">
-          <h1 class="h3">Calculer votre IMC</h1>
-          <label for="poids">Poids en kg.</label>
-          <input 
-           aria-label="Taille"
-          type="text" class="form-control mb-3" [(ngModel)]="poids" placeholder="Poids en kg.">
-          <label for="poids">Taille en m</label>
-          <input
-           aria-label="Taille"
-          type="text"   class="form-control mb-3"[(ngModel)]="taille" placeholder="Taille en mètre">
-         
-
-          <button 
-          (click)="onCalcul()"
-          class="btn btn-success my-3 col-12">
-            <i class="fa-solid fa-weight-scale"></i>
-          </button>
-
-         
-
-          <div *ngIf="imc.length > 0" class="alert my-3" [ngClass]="classIMC">
-            <div>IMC : {{imc}}</div>
-            <div>{{ tranche }}</div>
-            <div>{{ objectif }}</div>
-          </div>
-          
-        </div>
-      </div>
+      }
     </div>
-    <footer class="py-5 bg-dark">
-      <div class="container px-4 px-lg-5">
-        <p class="m-0 text-center text-white">
-          Copyright &copy; Seven Valley 2024
-        </p>
-      </div>
-    </footer>
+  </div>
+</div>
 
 ```
 
@@ -65,62 +50,68 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
+//import { RouterOutlet } from '@angular/router';
+
+// décorateurs
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  // attribut des champs input
-  poids: string = '';
-  taille: string = '';
-  imc: string = ''; // tofixed => '24.7'
-  tranche: string = '';
-  objectif:string='';
-  classIMC:string='';
-  onCalcul(): void {
-    const imc2 = Number(this.poids) / (Number(this.taille) * Number(this.taille));
-  
-    this.imc = imc2.toFixed(1);
-    if (imc2 > 25){
+  poids ='';
+  taille= '';
+  imcAfficher = '';
+  tranche='';
+  objectif='';
+  myClasse='';
+  onCalculer():void{
+    const imc = Number(this.poids) / (Number(this.taille) *Number(this.taille));
+    this.objectif='';
+    this.imcAfficher= imc.toFixed(1); '24.7'
+    if  (isNaN(imc)){
+      this.imcAfficher =''
+    return
+    }
+    if (imc > 25){
       // objectif en surpoids
       const poidsIdeal = 25 *parseFloat(this.taille) *parseFloat(this.taille);
+      console.log(poidsIdeal);
       const kilo = poidsIdeal - parseFloat(this.poids);
       this.objectif= 'Objectif :'+poidsIdeal.toFixed(1)+' kg ('+kilo.toFixed(1)+'kg)'; 
     }
-    if (imc2 < 18.5) {
-      this.tranche = 'maigreur'
-      // objectif en maigreur
-      const poidsIdeal = 18 *parseFloat(this.taille) *parseFloat(this.taille);
+    if (imc < 18.5){
+      this.tranche = 'maigreur';
+       const poidsIdeal = 18.5 *parseFloat(this.taille) *parseFloat(this.taille);
       const kilo = poidsIdeal - parseFloat(this.poids);
       this.objectif= 'Objectif :'+poidsIdeal.toFixed(1)+' kg (+'+kilo.toFixed(1)+'kg)';
-      this.classIMC='alert-danger' ;
+      this.myClasse='alert-danger'
     }
-    else if (imc2 < 25) { // 18.5 < imc < 25
-      this.tranche = 'normale'
-      this.classIMC='alert-success' ;
-      
+    else if (imc <25){
+      this.tranche = 'normal';
+      this.myClasse='alert-success'
     }
-    else if (imc2 < 30) {
-      this.tranche = 'surpoids'
-      this.classIMC='alert-warning' ;
+    else if (imc <30){
+      this.tranche = 'surpoids';
+      this.myClasse='alert-warning'
     }
-    else if (imc2 < 35) {
-      this.tranche = 'obésité'
-      this.classIMC='alert-danger' ;
+    else if (imc <35){
+      this.tranche = 'obésité';
+      this.myClasse='alert-danger'
     }
-    else if (imc2 < 40) {
-      this.tranche = 'obésité massive'
-       this.classIMC='alert-secondary' ;
-    } else if (imc2 > 40) {
-      this.tranche = 'obésité morbide'
-      this.classIMC='alert-primary' ;
+    else if (imc <40){
+      this.tranche = 'obésité massive';
+      this.myClasse='alert-secondary'
     }
-    // je vide les 2 champs input
-    this.poids ='';
+    else{
+      this.tranche = 'obésité morbide';
+       this.myClasse='alert-primary'
+    }
+  this.poids = '';
     this.taille ='';
-  }
+
+  } 
 }
 
 ```
