@@ -1,11 +1,11 @@
-<li class="list-group-item"
- [ngClass]="{
-  'list-group-item-success' : appareil.status,
-  'list-group-item-danger' : appareil.status==false,
-  }">
-    <h4>{{appareil.name}} </h4>
 
-    <button *ngIf="appareil.status == false" button (click)="onSwitch()" class="btn btn-success">ON</button>
 
-    <button *ngIf="appareil.status" (click)="onSwitch()" class="ms-3 ml-2 btn btn-danger">OFF</button>
-  </li>
+<li class="list-group-item "  [class]="getClass()">
+  <h4>{{ appareil()?.name }}</h4>
+  @if(appareil()?.status == false) {
+  <button (click)="onSwitchOne()" class="btn btn-success me-3"> ON</button>
+  }
+  @else{
+  <button (click)="onSwitchOne()" class="ml-2 btn btn-danger"> OFF</button>
+  }
+</li>

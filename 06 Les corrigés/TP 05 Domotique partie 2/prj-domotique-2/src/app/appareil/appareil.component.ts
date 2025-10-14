@@ -1,19 +1,25 @@
-import { Component, Input } from '@angular/core';
-import { Appareil } from '../models/appareils';
-import { CommonModule } from '@angular/common';
-import { AppareilService } from '../services/appareil.service';
+import { Component, inject, input } from '@angular/core';
+import Appareil from '../../models/appareil';
+import AppareilService from '../services/appareil.service';
 
 @Component({
   selector: 'app-appareil',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './appareil.component.html',
   styleUrl: './appareil.component.scss'
 })
 export class AppareilComponent {
-  @Input() appareil = new Appareil();
-  @Input() indice = 0;
-  constructor(private appareilService: AppareilService) { }
-  onSwitch() {
-    this.appareilService.switchOne(this.indice);
+  appareil = input.required<Appareil>()
+  indice = input.required<number>()
+  appareilService = inject(AppareilService);
+  getClass(): string {
+    if (this.appareil()?.status) {
+      return 'list-group-item-success';
+    }
+    return 'list-group-item-danger';
+
+  }
+  onSwitchOne() {
+    this.appareilService.switchOne(this.indice())
   }
 }

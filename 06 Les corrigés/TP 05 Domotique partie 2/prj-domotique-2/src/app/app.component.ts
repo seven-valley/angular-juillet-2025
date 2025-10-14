@@ -1,33 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import Appareil from '../models/appareil';
 import { AppareilComponent } from './appareil/appareil.component';
-import { Appareil } from './models/appareils';
-import { NgForm,FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
-import { AppareilService } from './services/appareil.service';
+import AppareilService from './services/appareil.service';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,AppareilComponent,FormsModule,NgFor],
+  imports: [AppareilComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
-  nom:string='';
+  nom = signal('');
   appareils:Appareil[]=[];
-  // appareilService
-  constructor(private appareilService:AppareilService){}
+  appareilService = inject(AppareilService);
   ngOnInit(){
     this.appareils = this.appareilService.appareils;
   }
-  ajouter(f:NgForm){
-
-    const a = new Appareil(f.value['nom'])
-    console.log(a);
-    f.reset();
-   this.appareilService.ajouter(a);
+  onAjouter(){
+    const appareil = new Appareil(new Date().getUTCMilliseconds(),this.nom())
+    this.appareilService.ajouter(appareil);
+    this.nom.set('');
   }
-  onSwitch(status:boolean){
+  onSwitchAll(status:boolean){
     this.appareilService.switchAll(status);
   }
 }

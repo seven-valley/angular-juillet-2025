@@ -11,8 +11,8 @@ A partir du fichier <code>tp-domotique-2.html</code>
 
 ```js
 const appareils =[
-    {name:'TV', status:'allumé'},
-    {name:'Xbox', status:'éteint'},
-    {name:'Machine à café', status:'allumé'}
+    {name:'TV', status:true},
+    {name:'Xbox', status:false},
+    {name:'Machine à café', status:true}
 ];
 ```

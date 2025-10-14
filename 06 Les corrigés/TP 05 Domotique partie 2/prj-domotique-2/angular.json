@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "prj-domotique": {
+    "domotique": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/prj-domotique",
+            "outputPath": "dist/domotique",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -54,9 +54,9 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-               "./node_modules/bootstrap/dist/css/bootstrap.css"
+               "src/styles.scss",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": []
           },
@@ -88,10 +88,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "prj-domotique:build:production"
+              "buildTarget": "domotique:build:production"
             },
             "development": {
-              "buildTarget": "prj-domotique:build:development"
+              "buildTarget": "domotique:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -122,8 +122,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "95c7ea52-a58a-4d5f-b566-440fcd5fd66c"
   }
 }

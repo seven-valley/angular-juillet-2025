@@ -1,41 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-tv me-3"></i>
-      Domotique</a>
-  </div>
-</nav>
 <div class="container mb-3">
   <div class="row">
     <div class="col-4">
       <h2>Les Appareils</h2>
-      <form (ngSubmit)="ajouter(a)" #a="ngForm">
 
-      <input name="nom"  class="form-control" placeholder="Appareil" ngModel />
+      <input type="text"
+      [value]="nom()" (input)="nom.set($any($event.target).value)"
+      class="form-control" placeholder="Appareil" />
 
-      <button class="btn btn-secondary my-3" type="submit">
+      <button (click)="onAjouter()" class="btn btn-secondary my-3">
         <i class="fa fa-plus"></i>
       </button>
-    </form>
 
       <ul class="list-group">
-        <app-appareil 
-        *ngFor="let a of appareils;index as i"
-        [appareil]="a"
-        [indice]="i"
-        ></app-appareil>
+
+        @for (appareil of appareils; track appareil.id; let i = $index) {
+        <app-appareil [appareil]="appareil" [indice]="i">
+        </app-appareil>
+        }
+
       </ul>
       <br />
-      <button (click)="onSwitch(true)" class="btn btn-success">ALL ON</button>
+      <button 
+        (click)="onSwitchAll(true)"
+      class="btn btn-success me-3">ALL ON</button>
 
-      <button (click)="onSwitch(false)" class="ms-3 ml-2 btn btn-danger">ALL OFF</button>
+      <button 
+       (click)="onSwitchAll(false)"
+      class="ml-2 btn btn-danger">ALL OFF</button>
     </div>
   </div>
 </div>
-<footer class="py-5 bg-dark">
-  <div class="container px-4 px-lg-5">
-    <p class="m-0 text-center text-white">
-      Copyright &copy; Seven Valley 2024
-    </p>
-  </div>
-</footer>
