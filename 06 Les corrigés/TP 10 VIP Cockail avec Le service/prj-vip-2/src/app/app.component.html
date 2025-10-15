@@ -1,85 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-martini-glass-citrus me-4"></i>
-      VIP Cocktail</a
-    >
-  </div>
-</nav>
 <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <div class="bg-gris p-4">
-        <form (ngSubmit)="ajouter(a)" #a="ngForm">
-        <div class="row">
-          <div class="col-4">
-            <input
-              aria-label="Prénom"
-              class="form-control"
-              placeholder="Prénom"
-              name="prenom"
-              ngModel
-            />
-          </div>
-          <div class="col-4">
-            <input
-              aria-label="Nom"
-              class="form-control"
-              placeholder="Nom"
-              name="nom"
-              ngModel
-            />
-          </div>
-          <div class="col-1">
-            <button class="btn btn-success">
-              <i class="fa fa-plus"></i>
-            </button>
+      <div class="row">
+        <div class="col-8">
+          <div class="bg-gris p-4">
+            <div class="row">
+              <div class="col-4">
+                <input
+                 [value]="prenom()" (input)="prenom.set($any($event.target).value)"
+                  aria-label="Prénom"
+                  class="form-control"
+                  placeholder="Prénom"
+                />
+              </div>
+              <div class="col-4">
+                <input
+                  [value]="nom()" (input)="nom.set($any($event.target).value)"
+                  aria-label="Nom"
+                  class="form-control"
+                  placeholder="Nom"
+                />
+              </div>
+              <div class="col-1">
+                <button 
+                  (click)="onAjouter()"
+                  class="btn btn-success">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <table class="table table-striped mt-4">
-        <thead>
-          <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th colspan="2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr [class]="getClass(p.status)" *ngFor = "let p of personnes;index as i">
-            <td>{{p.prenom}}</td>
-            <td>{{p.nom}}</td>
-            <td>
-              <button class="btn btn-danger" (click)="onEnlever(i)">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-            <td>
-              <button class="btn btn-warning" (click)="onChanger(i)">
-                <i class="fa fa-check"></i>
-              </button>
-            </td>
-          </tr>
-         
-        </tbody>
-      </table>
-    </div>
-
-    <!-- col4 -->
-  </div>
-  <!-- row -->
-</div>
-<footer class="py-5 bg-dark">
-  <div class="container px-4 px-lg-5">
-    <p class="m-0 text-center text-white">
-      Copyright &copy; Seven Valley 2024
-    </p>
-  </div>
-</footer>
-
-
+      <div class="row">
+        <div class="col-4">
+          <table class="table table-striped mt-4">
+            <thead>
+              <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            @for(personne of personnes; track personne.id; let indice =$index){
+              <tr [ngClass]="{
+               'table-success':personne.status,
+               'table-danger':personne.status==false}" data-indice="0">
+                <td>{{personne.prenom}}</td>
+                <td>{{personne.nom}}</td>
+                <td>
+                  <button 
+                  (click)="onEnlever(indice)"
+                  class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+                <td>
+                  <button 
+                  (click)="onModifier(indice)"
+                  class="btn btn-warning">
+                    <i class="fa fa-check"></i>
+                  </button>
+                </td>
+              </tr>
+            }
+            </tbody>
+          </table>
+        </div>

@@ -42,7 +42,9 @@
             </thead>
             <tbody>
             @for(personne of personnes; track personne.id; let indice =$index){
-              <tr class="table-success" data-indice="0">
+              <tr [ngClass]="{
+               'table-success':personne.status,
+               'table-danger':personne.status==false}" data-indice="0">
                 <td>{{personne.prenom}}</td>
                 <td>{{personne.nom}}</td>
                 <td>

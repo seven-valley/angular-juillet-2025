@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, effect, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import Personne from './models/personne';
-import PersonneService from '../services/personne.service';
+import PersonneService from './services/personne.service';
+
 
 
 
@@ -22,9 +23,9 @@ export class AppComponent implements OnInit  {
   private personneService = inject(PersonneService);
 
   personnes:Personne[]= [
-        { id: 42, prenom: "Brad", nom: "PITT" },
-        { id: 23, prenom: "Nicolas", nom: "CAGE" },
-        { id: 24, prenom: "Angelina", nom: "JOLIE" },
+        { id: 42, prenom: "Brad", nom: "PITT", status:true},
+        { id: 23, prenom: "Nicolas", nom: "CAGE" , status:false},
+        { id: 24, prenom: "Angelina", nom: "JOLIE", status:true },
     ];
   ngOnInit(): void {
     
