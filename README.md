@@ -1,5 +1,12 @@
 # liens des plugins VS CODE
 
+## site sympa :
+https://apprendre.bonjour-angular.com/cest-quoi/signal/
+https://angular.fr/
+https://openclassrooms.com/fr/courses/7471281-perfectionnez-vous-sur-angular
+evan Boissonot  
+https://www.youtube.com/watch?v=ZxulQhIFuvQ
+
 ## Angular Language Service
 
 https://marketplace.visualstudio.com/items?itemName=Angular.ng-template
