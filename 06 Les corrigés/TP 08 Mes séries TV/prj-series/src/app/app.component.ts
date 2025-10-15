@@ -55,7 +55,7 @@ export class AppComponent {
 
 
   onDeleteFilm(indice:number){
-    this.series.splice(indice,1);
+    this.favs.splice(indice,1);
     localStorage.setItem('series', JSON.stringify(this.favs));
   }
 }
