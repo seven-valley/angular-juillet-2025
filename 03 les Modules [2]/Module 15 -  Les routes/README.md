@@ -22,7 +22,7 @@ ng g c about
 ```
 La page **Produit**
 ```
-ng g c contact
+ng g c produit
 ```
 
 ## :two: Mise en place du router
@@ -65,10 +65,16 @@ export class AppComponent {
 ```html
 <nav>
   <ul>
-    <li><a routerLink="/" 
+    <li><a 
+      routerLink="/" 
       routerLinkActive="active" 
+       [routerLinkActiveOptions]="{exact: true}"
      >Home</a></li>
-    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    <li><a 
+    routerLink="/about" 
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}"
+    >About</a></li>
   </ul>
 </nav>
 <router-outlet />
